@@ -1,0 +1,478 @@
+:root {
+  --primary-color: #1a2313;
+  /* Dark Olive Green */
+  --secondary-color: #2c3a1e;
+  --accent-color: #d1b876;
+  /* Muted Gold */
+  --text-white: #ffffff;
+  --bg-color: #fafdfa;
+  /* Off-white */
+  --card-bg: #ffffff;
+  --text-color: #111111;
+  --border-color: #e0e0e0;
+  /* Font variables stay UNTOUCHED */
+  --font-main: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-arabic: var(--font-amiri), serif;
+  --font-urdu: var(--font-noto-urdu), serif;
+  --shadow: none;
+  --card-hover-border: var(--primary-color);
+}
+
+[data-theme='dark'] {
+  --bg-color: #121212;
+  --card-bg: #1e1e1e;
+  --text-color: #f1f1f1;
+  --border-color: #333333;
+  --heading-color: #f1f1f1;
+  --card-hover-border: #f1f1f1;
+  --btn-bg: #f1f1f1;
+  --btn-text: #111111;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--heading-color, var(--primary-color));
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+/* Layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--primary-color);
+  color: var(--text-white);
+  padding: 0.75rem 0;
+  /* Slightly reduced vertical padding */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+}
+
+.mobile-toggle {
+  display: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  /* Increased gap */
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: white;
+}
+
+.nav-link {
+  color: var(--text-white);
+  font-weight: 500;
+  font-size: 0.95rem;
+  opacity: 0.85;
+  transition: all 0.2s;
+}
+
+.nav-link:hover {
+  opacity: 1;
+  color: var(--accent-color);
+}
+
+/* Cards & Sections */
+.section-title {
+  margin: 2rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--border-color);
+  font-family: var(--font-main);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 0;
+  /* Boxy "old-school" professional look */
+  padding: 1.5rem;
+  box-shadow: none;
+  /* Removed pop shadow */
+  border: 1px solid var(--border-color);
+  transition: border-color 0.2s ease;
+  position: relative;
+}
+
+.card:hover {
+  border-color: var(--card-hover-border);
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--card-hover-border);
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+}
+
+.card:hover::after {
+  transform: scaleX(1);
+}
+
+/* Quranic Layout */
+.quran-ayah-card {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0;
+  position: relative;
+}
+
+.ayah-number-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.ayah-arabic {
+  font-family: var(--font-arabic);
+  font-size: 2.25rem;
+  text-align: right;
+  direction: rtl;
+  margin-bottom: 0.5rem;
+  line-height: 1.8;
+  color: var(--text-color);
+}
+
+.ayah-translation-ur {
+  font-family: var(--font-urdu);
+  font-size: 1.6rem;
+  text-align: right;
+  direction: rtl;
+  line-height: 2;
+  color: var(--text-color);
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+.ayah-translation-en {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.95rem;
+  color: var(--text-color);
+  opacity: 0.8;
+  line-height: 1.5;
+  text-align: left;
+}
+
+/* Admin Editor Styling - Wikipedia-ish but branded */
+.wiki-article {
+  background: var(--card-bg);
+  padding: 3rem;
+  border: 1px solid var(--border-color);
+  min-height: 600px;
+  box-shadow: var(--shadow);
+}
+
+.wiki-header {
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 2rem;
+  padding-bottom: 0.3rem;
+}
+
+/* Forms */
+.form-container {
+  max-width: 400px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.8rem;
+  background: var(--bg-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+}
+
+.btn {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  font-weight: 700;
+  transition: opacity 0.2s;
+}
+
+.btn-primary {
+  background-color: var(--btn-bg, var(--primary-color));
+  color: var(--btn-text, white);
+}
+
+.btn-home {
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  background: transparent;
+  padding: 0.8rem 2rem;
+  position: relative;
+  transition: border-color 0.2s ease;
+}
+
+.btn-home:hover {
+  border-color: var(--card-hover-border);
+}
+
+.btn-home::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--card-hover-border);
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+}
+
+.btn-home:hover::after {
+  transform: scaleX(1);
+}
+
+.btn-logout {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 0.5rem 1.2rem;
+  border-radius: 0;
+  position: relative;
+  transition: border-color 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-logout:hover {
+  border-color: white;
+}
+
+.btn-logout::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: white;
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+}
+
+.btn-logout:hover::after {
+  transform: scaleX(1);
+}
+
+.btn-accent {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+}
+
+/* Quill Adjustments */
+.ql-editor {
+  min-height: 15rem;
+  font-size: 1.1rem;
+}
+
+/* Footer */
+.footer {
+  background: var(--primary-color);
+  color: white;
+  padding: 2rem 0;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.footer-logo {
+  font-family: var(--font-arabic);
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-text {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Helper Classes */
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.rtl {
+  direction: rtl;
+}
+
+/* Minimal Page Fade */
+.page-fade-in {
+  opacity: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Admin Dashboard Enhancements */
+.admin-card-header {
+  padding: 1rem 1.5rem;
+  background: var(--bg-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.admin-form-group {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+}
+
+/* Custom transitions */
+.transition-slow {
+  transition: all 0.6s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  /* Bouncy unique */
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .navbar-content {
+    flex-direction: row;
+    /* Keep logo and hamburger on same row */
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
+
+  .nav-logo {
+    font-size: 1.25rem;
+  }
+
+  .mobile-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100vh;
+    background: var(--primary-color);
+    padding: 5rem 2rem 2rem;
+    gap: 1.5rem;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+  }
+
+  .nav-links.mobile-active {
+    display: flex;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wiki-article {
+    padding: 1rem;
+  }
+
+  .ayah-arabic {
+    font-size: 1.75rem;
+  }
+
+  .quran-ayah-card {
+    padding: 1rem;
+  }
+}
+
+.quran-ayah-card {
+  padding: 1rem;
+}

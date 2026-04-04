@@ -1,0 +1,40 @@
+my-project/
+├── backend/
+│   ├── app/
+│   │   ├── __init__.py
+│   │   ├── main.py              # FastAPI app entry point
+│   │   ├── database.py          # SQLAlchemy engine & session setup
+│   │   ├── models/
+│   │   │   ├── __init__.py
+│   │   │   └── user.py          # SQLAlchemy models
+│   │   ├── schemas/
+│   │   │   ├── __init__.py
+│   │   │   └── user.py          # Pydantic schemas (request/response)
+│   │   ├── routers/
+│   │   │   ├── __init__.py
+│   │   │   └── user.py          # Route handlers
+│   │   ├── crud/
+│   │   │   ├── __init__.py
+│   │   │   └── user.py          # DB query logic
+│   │   └── config.py            # App settings / env vars
+│   ├── database.db              # SQLite database file
+│   ├── requirements.txt
+│   └── .env
+│
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── api/                 # Axios/fetch calls to backend
+│   │   │   └── userApi.js
+│   │   ├── components/          # Reusable UI components
+│   │   ├── pages/               # Page-level components
+│   │   ├── hooks/               # Custom React hooks
+│   │   ├── context/             # React context / global state
+│   │   ├── assets/              # Images, fonts, etc.
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   ├── package.json
+│   └── .env                     # VITE_API_URL=http://localhost:8000
+│
+├── .gitignore
+└── README.md

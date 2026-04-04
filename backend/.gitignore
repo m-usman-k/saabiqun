@@ -1,0 +1,9 @@
+# Files
+.env
+*.db
+
+
+# Directories
+venv
+__pycache__
+*/__pycache__
